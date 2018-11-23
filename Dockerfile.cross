@@ -1,0 +1,17 @@
+FROM __BASEIMAGE_ARCH__/node:10.11.0-alpine
+
+__CROSS_COPY qemu/qemu-__QEMU_ARCH__-static /usr/bin/
+
+
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY ./src/package.json /usr/src/app/
+RUN npm install --production
+
+# Bundle app source
+COPY ./src /usr/src/app
+
+CMD [ "node", "." ]
