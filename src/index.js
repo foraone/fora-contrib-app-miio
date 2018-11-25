@@ -24,7 +24,7 @@ const typeConverter = {
     },
     energy: {
         type: "Number",
-        measurementUnit: "J"
+        measurementUnit: "Wh"
     },
     color: {
         type: "RGB"
