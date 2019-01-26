@@ -38,7 +38,9 @@ module.exports = class DeveloperApi extends EventEmitter {
 				const addresses = interfaces[name];
 
 				for(const addr of addresses) {
-					if(addr.family === 'IPv4') {
+					
+					if(addr.family === 'IPv4' && addr.address.indexOf('169.254')!==0) {
+						console.log("MULTICAST ON: ", addr.address)
 						this.socket.addMembership(MULTICAST_ADDRESS, addr.address);
 					}
 				}
